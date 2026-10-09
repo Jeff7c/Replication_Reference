@@ -1,4 +1,10 @@
-# Empirical  Replication References
+# Empirical Replication References
+
+This document combines three replication references in their original order. File links point to their corresponding folders in this repository. Methodological qualifications, results, and source links are retained.
+
+> **Repository layout:** [Fama3](Fama3/README.md) · [index effect](index%20effect/README.md) · [Momentum](Momentum/README.md)
+
+<a id="fama-french-three-factor-reference"></a>
 
 ## Fama–French Three-Factor Reference, 2000–2025
 
@@ -12,10 +18,10 @@ Differences from the official benchmark may reflect security eligibility timing,
 
 | File | Contents and units |
 |---|---|
-| [monthly_factors.csv](monthly_factors.csv) | Monthly constructed factors, official factors, and RF. Decimal returns: **0.01 = 1%**. |
-| [summary_statistics.csv](summary_statistics.csv) | Monthly mean, sample standard deviation, minimum, and maximum, in **percent**. |
-| [benchmark_comparison.csv](benchmark_comparison.csv) | Comparison periods, correlations, mean errors, and RMSE. Errors are in **percentage points**. |
-| [cumulative_returns.png](cumulative_returns.png) | Cumulative returns for each factor, compared with the official benchmark. |
+| [monthly_factors.csv](Fama3/monthly_factors.csv) | Monthly constructed factors, official factors, and RF. Decimal returns: **0.01 = 1%**. |
+| [summary_statistics.csv](Fama3/summary_statistics.csv) | Monthly mean, sample standard deviation, minimum, and maximum, in **percent**. |
+| [benchmark_comparison.csv](Fama3/benchmark_comparison.csv) | Comparison periods, correlations, mean errors, and RMSE. Errors are in **percentage points**. |
+| [cumulative_returns.png](Fama3/cumulative_returns.png) | Cumulative returns for each factor, compared with the official benchmark. |
 
 `constructed` denotes this replication; `benchmark` denotes the Kenneth French series. The official file uses the **2026-07 CRSP database release**. Comparisons use the same available months for each pair of series.
 
@@ -39,7 +45,7 @@ $$C_T=\prod_{t=1}^{T}(1+r_t)-1.$$
 
 The chart displays this value in percent. Blue is constructed; dashed orange is the benchmark. Each pair starts at its first common available month.
 
-![Cumulative factor returns](cumulative_returns.png)
+![Cumulative factor returns](Fama3/cumulative_returns.png)
 
 These are factor-return illustrations, not fund NAVs. They are assignment diagnostics, not a reproduction of a specific figure in the 1993 paper. The implementation follows modern benchmark conventions, including the updated book-equity definition.
 
@@ -72,8 +78,8 @@ This replication instead uses 2000–2009 and 2010–2020 in both tables, with t
 
 | File | Contents and units |
 |---|---|
-| [table1.csv](table1.csv) | Abnormal returns before, on, and after the announcement reaction day; early and later samples. |
-| [table2.csv](table2.csv) | Cumulative abnormal returns from the reaction day through 5, 10, 20, and 60 trading days; full and subsample results. |
+| [table1.csv](index%20effect/table1.csv) | Abnormal returns before, on, and after the announcement reaction day; early and later samples. |
+| [table2.csv](index%20effect/table2.csv) | Cumulative abnormal returns from the reaction day through 5, 10, 20, and 60 trading days; full and subsample results. |
 
 Return cells show **percent (Ruback-adjusted t-statistic)**. `N events` counts additions. No clustered standard errors are used. These are the complete result tables for student comparison.
 
@@ -134,11 +140,11 @@ The daily data begin in 2000. The longest 12/12 strategy needs prior returns and
 
 | File | Contents |
 | --- | --- |
-| [Jegadeesh_Titman_1993_replication.ipynb](Jegadeesh_Titman_1993_replication.ipynb) | Code for Tables I–III; reads the three supplied files in `data/` |
-| [output/table1.csv](output/table1.csv) | 32 J/K strategies, with and without a one-week skip |
-| [output/table2.csv](output/table2.csv) | Beta and average market capitalization of the 6/6 deciles |
-| [output/table3a.csv](output/table3a.csv) | 6/6 returns within size and prior-year-beta groups |
-| [output/table3b.csv](output/table3b.csv) | Market-model abnormal returns for those groups |
+| `Jegadeesh_Titman_1993_replication.ipynb` (not shown in the current repository) | Code for Tables I–III; reads the three supplied files in `data/` |
+| [output/table1.csv](Momentum/table1.csv) | 32 J/K strategies, with and without a one-week skip |
+| [output/table2.csv](Momentum/table2.csv) | Beta and average market capitalization of the 6/6 deciles |
+| [output/table3a.csv](Momentum/table3a.csv) | 6/6 returns within size and prior-year-beta groups |
+| [output/table3b.csv](Momentum/table3b.csv) | Market-model abnormal returns for those groups |
 
 ### Main results
 
@@ -175,4 +181,4 @@ All 32 spreads are positive. For the immediate 6/6 strategy, the mean is **0.90%
 
 For the full sample, the joint equal-mean test in Panel A has p = 0.2050; the joint-alpha test in Panel B has p = 0.0082. The CSV files contain every decile and test statistic.
 
-Open the notebook from this folder or the project root and run its cells in order. `cache/` holds intermediate calculations and can be rebuilt from `data/`; it is not a result. Returns in the CSV files are shown as percentages, with t-statistics in parentheses where applicable. Source: [Jegadeesh and Titman (1993)](https://doi.org/10.1111/j.1540-6261.1993.tb04702.x).
+If the replication notebook is added to the repository, open it and run its cells in order. `cache/` holds intermediate calculations and can be rebuilt from `data/`; it is not a result. Returns in the CSV files are shown as percentages, with t-statistics in parentheses where applicable. Source: [Jegadeesh and Titman (1993)](https://doi.org/10.1111/j.1540-6261.1993.tb04702.x).
